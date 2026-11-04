@@ -86,6 +86,15 @@
       padding: 0 .22em; box-shadow: var(--shadow-hard-sm);
       display: inline-block; transform: rotate(-2deg);
     }
+    .assinatura {
+      display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px 10px;
+      margin: 0 0 var(--space-3); padding: 8px 18px; min-height: 44px;
+      background: var(--yellow-100); border: var(--line); border-radius: var(--radius-pill);
+      box-shadow: var(--shadow-hard-sm); transform: rotate(-1.5deg);
+      font: 500 15px/1.4 var(--font-sans); color: var(--ink);
+    }
+    .assinatura strong { font: 700 15px/1.4 var(--font-sans); }
+    @media (max-width: 560px) { .assinatura { border-radius: var(--radius-md); display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: 10px 16px; } }
     .subtitulo { font-size: clamp(19px, 2.2vw, 25px); line-height: 1.45; color: var(--ink-soft); margin: 0; max-width: 34ch; }
     .status { margin-top: var(--space-3); display: flex; flex-wrap: wrap; gap: var(--space-1); }
 
@@ -249,6 +258,7 @@
     <span class="stk a-wiggle stk-cereja" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M36 60C40 40 52 24 66 14" fill="none" stroke="#3E9B6A" stroke-width="3.5" stroke-linecap="round"/><path d="M66 62C64 44 66 28 66 14" fill="none" stroke="#3E9B6A" stroke-width="3.5" stroke-linecap="round"/><path d="M66 14C76 6 88 10 91 19C81 24 71 22 66 14Z" fill="#9FE0B5" stroke="#2B1F2E" stroke-width="2.5" stroke-linejoin="round"/><circle cx="34" cy="68" r="16" fill="#FF6B9A" stroke="#2B1F2E" stroke-width="3"/><circle cx="67" cy="70" r="16" fill="#FF6B9A" stroke="#2B1F2E" stroke-width="3"/><ellipse cx="28" cy="63" rx="3.5" ry="5" fill="#FFFFFF"/><ellipse cx="61" cy="65" rx="3.5" ry="5" fill="#FFFFFF"/></svg></span>
 
     <div class="hero-texto">
+      <p class="assinatura"><strong>made by: jojo ibanez</strong> <span>use e abuse!! se atualize na vibe da jojo</span></p>
       <p class="eyebrow" id="data">Carregando…</p>
       <h1>Painel <mark>Brasil</mark></h1>
       <p class="subtitulo">O que importa hoje, reunido de seis redações e ordenado por quantas delas contaram o mesmo fato.</p>
