@@ -99,6 +99,12 @@ def executar(dry_run: bool) -> int:
 
     novas: int | None = None
     if dry_run:
+        vistos: set[str] = set()
+        for n in sorted(noticias, key=lambda x: -x.relevancia):
+            if n.relevancia < 2 or n.grupo in vistos or len(vistos) >= 20:
+                continue
+            vistos.add(n.grupo)
+            log.info("destaque (%d fontes) [%s] %s", n.relevancia, n.categoria, n.titulo)
         log.info("dry-run: nada foi gravado no banco")
     else:
         dsn = os.environ.get("SUPABASE_DB_URL", "").strip()
@@ -164,6 +170,7 @@ def main(argv: list[str] | None = None) -> int:
     logging.basicConfig(
         level=logging.INFO, format="%(asctime)s %(levelname)-7s %(name)s: %(message)s"
     )
+    logging.getLogger("httpx").setLevel(logging.WARNING)
     return executar(dry_run=args.dry_run)
 
 
