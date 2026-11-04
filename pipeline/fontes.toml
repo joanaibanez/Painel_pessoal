@@ -96,12 +96,8 @@ slug = "cnn-brasil"
 nome = "CNN Brasil"
 site_url = "https://www.cnnbrasil.com.br"
 feeds = [
-    { categoria = "geral",              url = "https://www.cnnbrasil.com.br/nacional/feed/" },
-    { categoria = "economia",           url = "https://www.cnnbrasil.com.br/economia/feed/" },
-    { categoria = "politica",           url = "https://www.cnnbrasil.com.br/politica/feed/" },
-    { categoria = "saude",              url = "https://www.cnnbrasil.com.br/saude/feed/" },
-    { categoria = "ciencia_tecnologia", url = "https://www.cnnbrasil.com.br/tecnologia/feed/" },
-    { categoria = "mundo",              url = "https://www.cnnbrasil.com.br/internacional/feed/" },
+    # Os feeds por editoria (/economia/feed/ etc.) retornam 404; só o geral existe.
+    { categoria = "geral", url = "https://www.cnnbrasil.com.br/feed/" },
 ]
 
 [[fontes]]
