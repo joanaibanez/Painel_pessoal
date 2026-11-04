@@ -1,0 +1,113 @@
+# =============================================================================
+# Fontes de notícias monitoradas pelo pipeline.
+#
+# Critérios de curadoria (neutralidade):
+#   1. Diversidade: veículo público (Agência Brasil), grandes redações privadas
+#      (g1, Folha, Estadão, CNN Brasil) e um veículo estrangeiro em português
+#      (BBC News Brasil). Nenhuma fonte com linha editorial declaradamente
+#      partidária.
+#   2. Somente feeds de editorias factuais. Colunas, blogs e opinião são
+#      removidos pelos filtros abaixo.
+#   3. Importância = nº de fontes independentes que noticiaram o mesmo fato.
+#      Uma manchete só vira "destaque" quando várias redações a cobrem.
+#
+# Para adicionar uma fonte: crie um bloco [[fontes]] e liste os feeds.
+# Categorias válidas: geral, economia, politica, saude, educacao,
+#                     ciencia_tecnologia, mundo
+# =============================================================================
+
+[filtros]
+# Trechos de URL que indicam conteúdo opinativo, patrocinado ou de baixo valor
+# informativo. Comparação sem diferenciar maiúsculas.
+url_excluir = [
+    "/opiniao", "/colunas/", "/coluna/", "/colunistas/", "/blogs/", "/blog/",
+    "/editorial", "/artigo/", "/analise/", "/podcast", "/video/", "/videos/",
+    "/patrocinado", "/publieditorial", "/conteudo-de-marca", "/horoscopo",
+    "/bbb", "/novelas/", "/celebridades/", "/famosos/", "/pop-arte/",
+    "/loterias/", "/quiz/", "/viva/", "/entretenimento/", "/esportes/",
+    "/esporte/", "ge.globo.com", "/futebol/",
+]
+
+# Termos no título (normalizados, sem acento) que indicam opinião, propaganda
+# ou entretenimento. Correspondência por palavra/expressão inteira.
+# Evite palavras ambíguas (ex.: "artigo", "análise") que geram falso positivo.
+titulo_excluir = [
+    "opiniao", "editorial", "podcast", "ao vivo", "assista", "veja fotos",
+    "horoscopo", "bbb", "big brother", "novela", "reality show", "famosos",
+    "celebridade", "mega sena", "lotofacil", "quina", "loteria", "palpite",
+    "black friday", "patrocinado", "publieditorial",
+]
+
+[[fontes]]
+slug = "agencia-brasil"
+nome = "Agência Brasil"
+site_url = "https://agenciabrasil.ebc.com.br"
+feeds = [
+    { categoria = "geral",     url = "https://agenciabrasil.ebc.com.br/rss/geral/feed.xml" },
+    { categoria = "economia",  url = "https://agenciabrasil.ebc.com.br/rss/economia/feed.xml" },
+    { categoria = "politica",  url = "https://agenciabrasil.ebc.com.br/rss/politica/feed.xml" },
+    { categoria = "saude",     url = "https://agenciabrasil.ebc.com.br/rss/saude/feed.xml" },
+    { categoria = "educacao",  url = "https://agenciabrasil.ebc.com.br/rss/educacao/feed.xml" },
+    { categoria = "mundo",     url = "https://agenciabrasil.ebc.com.br/rss/internacional/feed.xml" },
+]
+
+[[fontes]]
+slug = "g1"
+nome = "g1"
+site_url = "https://g1.globo.com"
+feeds = [
+    { categoria = "geral",              url = "https://g1.globo.com/rss/g1/brasil/" },
+    { categoria = "economia",           url = "https://g1.globo.com/rss/g1/economia/" },
+    { categoria = "politica",           url = "https://g1.globo.com/rss/g1/politica/" },
+    { categoria = "saude",              url = "https://g1.globo.com/rss/g1/ciencia-e-saude/" },
+    { categoria = "educacao",           url = "https://g1.globo.com/rss/g1/educacao/" },
+    { categoria = "ciencia_tecnologia", url = "https://g1.globo.com/rss/g1/tecnologia/" },
+    { categoria = "mundo",              url = "https://g1.globo.com/rss/g1/mundo/" },
+]
+
+[[fontes]]
+slug = "folha"
+nome = "Folha de S.Paulo"
+site_url = "https://www.folha.uol.com.br"
+feeds = [
+    { categoria = "geral",              url = "https://feeds.folha.uol.com.br/cotidiano/rss091.xml" },
+    { categoria = "economia",           url = "https://feeds.folha.uol.com.br/mercado/rss091.xml" },
+    { categoria = "politica",           url = "https://feeds.folha.uol.com.br/poder/rss091.xml" },
+    { categoria = "saude",              url = "https://feeds.folha.uol.com.br/equilibrioesaude/rss091.xml" },
+    { categoria = "educacao",           url = "https://feeds.folha.uol.com.br/educacao/rss091.xml" },
+    { categoria = "ciencia_tecnologia", url = "https://feeds.folha.uol.com.br/ciencia/rss091.xml" },
+    { categoria = "mundo",              url = "https://feeds.folha.uol.com.br/mundo/rss091.xml" },
+]
+
+[[fontes]]
+slug = "estadao"
+nome = "Estadão"
+site_url = "https://www.estadao.com.br"
+feeds = [
+    { categoria = "geral",    url = "https://www.estadao.com.br/arc/outboundfeeds/feeds/rss/sections/brasil/" },
+    { categoria = "economia", url = "https://www.estadao.com.br/arc/outboundfeeds/feeds/rss/sections/economia/" },
+    { categoria = "politica", url = "https://www.estadao.com.br/arc/outboundfeeds/feeds/rss/sections/politica/" },
+    { categoria = "saude",    url = "https://www.estadao.com.br/arc/outboundfeeds/feeds/rss/sections/saude/" },
+    { categoria = "mundo",    url = "https://www.estadao.com.br/arc/outboundfeeds/feeds/rss/sections/internacional/" },
+]
+
+[[fontes]]
+slug = "cnn-brasil"
+nome = "CNN Brasil"
+site_url = "https://www.cnnbrasil.com.br"
+feeds = [
+    { categoria = "geral",              url = "https://www.cnnbrasil.com.br/nacional/feed/" },
+    { categoria = "economia",           url = "https://www.cnnbrasil.com.br/economia/feed/" },
+    { categoria = "politica",           url = "https://www.cnnbrasil.com.br/politica/feed/" },
+    { categoria = "saude",              url = "https://www.cnnbrasil.com.br/saude/feed/" },
+    { categoria = "ciencia_tecnologia", url = "https://www.cnnbrasil.com.br/tecnologia/feed/" },
+    { categoria = "mundo",              url = "https://www.cnnbrasil.com.br/internacional/feed/" },
+]
+
+[[fontes]]
+slug = "bbc-brasil"
+nome = "BBC News Brasil"
+site_url = "https://www.bbc.com/portuguese"
+feeds = [
+    { categoria = "geral", url = "https://feeds.bbci.co.uk/portuguese/rss.xml" },
+]
