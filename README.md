@@ -15,7 +15,7 @@ Painel diário com as manchetes importantes do Brasil e indicadores econômicos.
                                                                        │ REST (chave publishable)
                                                               ┌────────▼─────────┐
                                                               │ GitHub Pages     │
-                                                              │ site/index.html  │
+                                                              │ index.html       │
                                                               └──────────────────┘
 ```
 
@@ -36,11 +36,11 @@ Limitação: nenhum filtro automático garante neutralidade absoluta. O pipeline
 .github/workflows/
   coleta-diaria.yml   # cron 07h BRT + execução manual (com opção dry-run)
   ci.yml              # ruff + pytest
-  pages.yml           # publica site/ no GitHub Pages
 pipeline/             # coleta, filtros, agrupamento, persistência
   fontes.toml         # fontes, feeds e regras de exclusão (edite aqui)
 supabase/migrations/  # modelagem de dados (aplicada automaticamente pelo pipeline)
-site/index.html       # painel
+index.html            # painel (servido pelo GitHub Pages)
+.nojekyll             # desativa o Jekyll: o Pages serve o HTML como está
 tests/                # testes unitários
 ```
 
@@ -65,7 +65,7 @@ tests/                # testes unitários
 1. **Secret do banco.** Em *Settings → Secrets and variables → Actions → New repository secret*:
    - Nome: `SUPABASE_DB_URL`
    - Valor: a string de conexão do pooler, `postgresql://postgres.<ref>:<senha>@aws-0-us-east-2.pooler.supabase.com:6543/postgres`
-2. **GitHub Pages.** Em *Settings → Pages → Build and deployment → Source*, escolha **GitHub Actions**. Depois rode o workflow *Publicar site* uma vez.
+2. **GitHub Pages.** Em *Settings → Pages → Build and deployment*, use **Deploy from a branch**, branch `main`, pasta `/ (root)`. Cada push na `main` republica o site em `https://joanaibanez.github.io/Painel_pessoal/`.
 3. **Primeira carga.** Em *Actions → Coleta diária de notícias → Run workflow*. A primeira execução cria as tabelas automaticamente.
 
 Para testar as fontes sem gravar no banco, use *Run workflow* com **dry_run** marcado. O resumo do job mostra quantos itens cada feed devolveu.
