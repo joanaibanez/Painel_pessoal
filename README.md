@@ -19,6 +19,10 @@ Painel diário com as manchetes importantes do Brasil e indicadores econômicos.
                                                               └──────────────────┘
 ```
 
+## Visual
+
+O `index.html` segue o design system **Pastel Pop**: fundo `ground`, cards brancos com contorno `ink` de 2px e sombra dura, acentos pastel em rotação (rosa, amarelo, lilás, menta) e tipografia Fredoka, DM Sans e JetBrains Mono. Os tokens ficam copiados em `:root`. Os adesivos animados param quando o sistema pede menos movimento (`prefers-reduced-motion`).
+
 ## Neutralidade editorial
 
 | Mecanismo | Como funciona |
