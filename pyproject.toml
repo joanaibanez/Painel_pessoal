@@ -1,0 +1,17 @@
+[project]
+name = "painel-pessoal"
+version = "1.0.0"
+description = "Pipeline diário de notícias do Brasil para o Supabase"
+requires-python = ">=3.12"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
+ignore = ["SIM905"]  # stopwords legíveis via str.split
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
